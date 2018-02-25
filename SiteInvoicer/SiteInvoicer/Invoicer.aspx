@@ -18,9 +18,10 @@
     </div>
     <br />
     <br />
-    <h4>Dastos del cliente</h4>
-    <hr />
-    <div class="form-horizontal">
+    <div class="col-md-6">
+        <h4>Dastos del cliente</h4>
+        <hr />
+        <div class="form-horizontal">
         <div class="form-group">
             <label for="inputEmail3" class="col-sm-2 control-label">Ruc</label>
             <div class="col-sm-10">
@@ -52,6 +53,83 @@
             </div>
         </div>--%>
     </div>
+        <br />
+    <br />
+    </div>
+    <div class="col-md-6">
+        <h4>Subtotales</h4>
+        <hr />
+        <div class="text-right">
+        <div class="col-md-4"></div>
+        <div class="col-md-8">
+         <div class="table-responsive">
+        <table class="table ">
+            <tr> 
+                <th scope="row">Subtotal Sin Impuestos</th> 
+                <td>
+                    <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+                        <ContentTemplate>
+                            <asp:Label ID="lbl_SubtotalSin_Impuestos" runat="server" Text="0"></asp:Label>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </td>
+            </tr>
+            <tr> 
+                <th scope="row">Subtotal 0%</th> 
+                <td>
+                    <asp:UpdatePanel ID="UpdatePanel9" runat="server">
+                        <ContentTemplate>
+                            <asp:Label ID="lbl_Subtotal_iva0" runat="server" Text="0"></asp:Label>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </td>
+            </tr>
+            <tr> 
+                <th scope="row">Subtotal 12%</th> 
+                <td>
+                    <asp:UpdatePanel ID="UpdatePanel5" runat="server">
+                        <ContentTemplate>
+                            <asp:Label ID="lbl_Subtotal_iva12" runat="server" Text="0"></asp:Label>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </td>
+            </tr>
+            <tr> 
+                <th scope="row">Subtotal 14%</th> 
+                <td><asp:UpdatePanel ID="UpdatePanel6" runat="server">
+                        <ContentTemplate>
+                            <asp:Label ID="lbl_Subtotal_iva14" runat="server" Text="0"></asp:Label>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </td>
+            </tr>
+            <tr> 
+                <th scope="row">Valor IVA</th> 
+                <td>
+                    <asp:UpdatePanel ID="UpdatePanel7" runat="server">
+                        <ContentTemplate>
+                            <asp:Label ID="lbl_valor_iva" runat="server" Text="0"></asp:Label>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </td>
+            </tr>
+             <tr> 
+                <th scope="row">Valor Total</th> 
+                <td>
+                    <asp:UpdatePanel ID="UpdatePanel8" runat="server">
+                        <ContentTemplate>
+                            <asp:Label ID="lbl_valor_total" runat="server" Text="0"></asp:Label>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </td>
+            </tr>
+        </table>
+    </div>
+    </div>
+    </div>
+    </div>
+    
+    
 
     <br />
     <br />
@@ -78,15 +156,15 @@
         <div class="form-group col-md-1">
             <label for="inputPassword4">% IVA</label>
             <asp:DropDownList ID="ddlIva" runat="server" CssClass="form-control" >
-                <asp:ListItem Value="0">% 0</asp:ListItem>
-                <asp:ListItem Value="14">% 14</asp:ListItem>
-                <asp:ListItem Value="12">% 12</asp:ListItem>
+                <asp:ListItem Value="0">0</asp:ListItem>
+                <asp:ListItem Value="14">14</asp:ListItem>
+                <asp:ListItem Value="12">12</asp:ListItem>
             </asp:DropDownList>
         </div>
-        <div class="form-group col-md-2">
+        <%--<div class="form-group col-md-2">
             <label for="inputPassword4">Subtotal</label>
            <asp:TextBox ID="txtSubtotal" TextMode="Number" CssClass="form-control"  runat="server" placeholder="Subtotal"></asp:TextBox>
-        </div>
+        </div>--%>
         <div class="form-group col-md-2">
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
@@ -101,9 +179,11 @@
                      <div class="table-responsive">
         <asp:UpdatePanel ID="UpdatePanel2" runat="server">
             <ContentTemplate>
-                 
-                         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CssClass="table table-striped">
+                         <asp:GridView ID="GridView1" runat="server" DataKeyNames="id" OnRowDeleting="GridView1_RowDeleting" AutoGenerateColumns="False" CssClass="table table-striped" >
                         <Columns>
+                            <asp:BoundField HeaderText="Id" DataField="id" Visible="False"  >
+                            <HeaderStyle BackColor="Gray" />
+                            </asp:BoundField>
                             <asp:BoundField HeaderText="Código" DataField="codigo" >
                             <HeaderStyle BackColor="Gray" />
                             </asp:BoundField>
@@ -137,4 +217,11 @@
     </div>
 
     
+    
+   <%--<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />--%>
+
+
+
+    
+
 </asp:Content>
