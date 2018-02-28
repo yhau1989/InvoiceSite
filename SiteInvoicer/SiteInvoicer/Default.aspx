@@ -10,10 +10,22 @@
 
     <div class="row">
         <div class="col-md-4">
-            <h2>Crear Facturas</h2>
+            <h2>Crear Comprobantes</h2>
             <p>Crear documentos electrónicos y autorizarlos ante el SRI.</p>
             <p>
-                <a class="btn btn-default" href="Invoicer">Vamos &raquo;</a>
+                <a class="btn btn-default" href="Invoicer">Facturas &raquo;</a>
+            </p>
+            <p>
+                <a class="btn btn-default" href="#">Notas de Débito &raquo;</a>
+            </p>
+            <p>
+                <a class="btn btn-default" href="#">Notas de Crédito &raquo;</a>
+            </p>
+            <p>
+                <a class="btn btn-default" href="#">Comprobantes de retención &raquo;</a>
+            </p>
+            <p>
+                <a class="btn btn-default" href="#">Guías de remisión &raquo;</a>
             </p>
         </div>
         <div class="col-md-4">

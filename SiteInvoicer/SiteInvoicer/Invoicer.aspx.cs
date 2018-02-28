@@ -41,28 +41,34 @@ namespace SiteInvoicer
 
         protected void addItem_Click(object sender, EventArgs e)
         {
-            DataTable dt = (DataTable)(Session["myItems"]);
-            DataRow dr = dt.NewRow();
+            if (txtDescrip.Text.Length > 0 && txtCantidad.Text.Length > 0 && txtprecio.Text.Length > 0)
+            {
+                DataTable dt = (DataTable)(Session["myItems"]);
+                DataRow dr = dt.NewRow();
 
-            dr["id"] = (dt.Rows.Count > 0) ? dt.Rows.Count + 1 : 1;
-            dr["codigo"] = txtCodigo.Text;
-            dr["descripcion"] = txtDescrip.Text;
-            dr["cantidad"] = txtCantidad.Text;
-            dr["precio_unitario"] = txtprecio.Text;
-            dr["iva"] = ddlIva.SelectedValue.ToString();
+                dr["id"] = (dt.Rows.Count > 0) ? dt.Rows.Count + 1 : 1;
+                dr["codigo"] = txtCodigo.Text;
+                dr["descripcion"] = txtDescrip.Text;
+                dr["cantidad"] = txtCantidad.Text;
+                dr["precio_unitario"] = txtprecio.Text;
+                dr["iva"] = ddlIva.SelectedValue.ToString();
 
-            decimal iva = (ddlIva.SelectedValue.ToString().Equals("0")) ? 0 : (ddlIva.SelectedValue.ToString().Equals("14")) ? 0.14m : 0.12m;
-            decimal subtotal = (Convert.ToInt32(txtCantidad.Text) * Convert.ToDecimal(txtprecio.Text));
+                decimal iva = (ddlIva.SelectedValue.ToString().Equals("0")) ? 0 : (ddlIva.SelectedValue.ToString().Equals("14")) ? 0.14m : 0.12m;
+                decimal subtotal = (Convert.ToInt32(txtCantidad.Text) * Convert.ToDecimal(txtprecio.Text));
 
-            setSubtotales(subtotal, Convert.ToInt16(ddlIva.SelectedValue.ToString()), (subtotal * iva), "add");
+                setSubtotales(subtotal, Convert.ToInt16(ddlIva.SelectedValue.ToString()), (subtotal * iva), "add");
 
-            dr["subtotal"] = subtotal.ToString();
+                dr["subtotal"] = subtotal.ToString();
 
-            dt.Rows.Add(dr);
-            Session["myItems"] = dt;
+                dt.Rows.Add(dr);
+                Session["myItems"] = dt;
 
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
+
+                btCrear.Enabled = true;
+            }
+
         }
 
 
@@ -143,6 +149,8 @@ namespace SiteInvoicer
                     break;
                 }
             }
+
+            btCrear.Enabled = (dt.Rows.Count <= 0) ? false : true;
 
             Session["myItems"] = dt;
 
