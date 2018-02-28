@@ -32,14 +32,14 @@
             <h2>Visor Interno</h2>
             <p>Ver todos los comprobantes que se han generado hasta el momento, tambien puede visualizar los documentos electrónicos recibidos.</p>
             <p>
-                <a class="btn btn-default" href="Invoicer">Vamos &raquo;</a>
+                <a class="btn btn-default" href="http://srv01351:83/" target="_blank">Vamos &raquo;</a>
             </p>
         </div>
         <div class="col-md-4">
             <h2>Visor Clientes</h2>
             <p>Portal de Facturación electrónica para sus clientes.</p>
             <p>
-                <a class="btn btn-default" href="Invoicer">Vamos &raquo;</a>
+                <a class="btn btn-default" href="http://srv01351" target="_blank">Vamos &raquo;</a>
             </p>
         </div>
     </div>
