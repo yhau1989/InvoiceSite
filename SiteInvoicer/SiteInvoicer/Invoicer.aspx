@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <h2><%: Title %>.</h2>
-    <h3>Crear Factura electrónica (Sucursal-Caja: <strong>001-005</strong>)</h3>
+    <h3>Crear Factura electrónica (Sucursal-Caja: <strong>004-040</strong>)</h3>
     <p>Llene los datos y envie a autorizar al SRI.</p>
 
 
@@ -11,7 +11,7 @@
         <div class="col-md-11">
         <asp:UpdatePanel ID="UpdatePanel3" runat="server">
             <ContentTemplate>
-                <asp:Button ID="btCrear" CssClass="btn btn-success" Enabled="false" runat="server" OnClientClick="modal()" Text="Crear Factura" />
+                <asp:Button ID="btCrear" CssClass="btn btn-success" OnClick="btCrear_Click" Enabled="false" runat="server" OnClientClick="modal()" Text="Crear Factura" />
             </ContentTemplate>
         </asp:UpdatePanel>
             </div>
@@ -41,25 +41,57 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-4 control-label">Número identificación</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="sdsdsds" maxlength="13" placeholder="Número identificación" />
+                        <asp:UpdatePanel ID="UpdatePanel11" runat="server">
+                            <ContentTemplate>
+                                <asp:TextBox ID="txtCedula" TextMode="SingleLine" MaxLength="13" CssClass="form-control" placeholder="Número identificación" runat="server"></asp:TextBox>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-4 control-label">Razon Social</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="inputEmail3ss" placeholder="Razon Social" />
+                        <asp:UpdatePanel ID="UpdatePanel12" runat="server">
+                            <ContentTemplate>
+                                <asp:TextBox ID="txtNombre" TextMode="SingleLine" CssClass="form-control" placeholder="Razon Social" runat="server"></asp:TextBox>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-4 control-label">Email</label>
                     <div class="col-sm-8">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email" />
+                        <asp:UpdatePanel ID="UpdatePanel13" runat="server">
+                            <ContentTemplate>
+                                <asp:TextBox ID="txtemail" TextMode="Email" CssClass="form-control" placeholder="Email" runat="server"></asp:TextBox>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-4 control-label">Dirección</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="inputPassword3" placeholder="Dirección" />
+                        <asp:UpdatePanel ID="UpdatePanel14" runat="server">
+                            <ContentTemplate>
+                                <asp:TextBox ID="txtDireccion" CssClass="form-control" placeholder="Dirección" runat="server"></asp:TextBox>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-3">
+                        <asp:UpdatePanel ID="UpdatePanel15" runat="server">
+                            <ContentTemplate>
+                                <asp:Button ID="btSaveClient" OnClick="btSaveClient_Click" CssClass="btn btn-default" runat="server" Text="Nuevo Cliente" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+                    <div class="col-sm-2">
+                        <asp:UpdatePanel ID="UpdatePanel16" CssClass="btn btn-default" runat="server">
+                            <ContentTemplate>
+                                <asp:Button ID="btFoundClient" OnClick="btFoundClient_Click" CssClass="btn btn-default" runat="server" Text="Buscar Cliente" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
                     </div>
                 </div>
 
@@ -245,7 +277,7 @@
         <h4 class="modal-title">Mensaje</h4>
       </div>
       <div class="modal-body">
-        <p>Se ha creado correctamente su documento electrónico <strong>001-005-000000056</strong></p>
+        <p id="myPersonalityMsj">Se ha creado correctamente su documento electrónico <strong>001-005-000000056</strong></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
@@ -263,13 +295,11 @@
             $('#myModal').modal('show');
         }
 
-        //$(document).ready(function () {
-            
-        //    $('#MainContent_btCrear').click(function () {
-        //        console.log('modal');
-        //        $('#myModal').modal(show);
-        //    });
-        //});
+        function modalWithMessage(mensaje) {
+            $('#myPersonalityMsj').html(mensaje);
+            console.log('modal');
+            $('#myModal').modal('show');
+        }
 
     </script>
 
